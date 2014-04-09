@@ -22,6 +22,10 @@ private slots:
 
     void on_actionSave_triggered();
 
+    void on_saveButton_clicked(bool checked);
+    void on_saveButton_clicked();
+
+
 private:
     Ui::notepad *ui;
 };

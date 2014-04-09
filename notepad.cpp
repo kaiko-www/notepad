@@ -57,3 +57,23 @@ void notepad::on_actionSave_triggered()
             }
         }
 }
+
+
+void notepad::on_saveButton_clicked()
+{
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), QString(),
+                tr("Text Files (*.txt);;C++ Files (*.cpp *.h);;Document Files (*.doc);;All Files(*.*)"));
+
+        if (!fileName.isEmpty()) {
+
+            QFile file(fileName);
+            if (!file.open(QIODevice::WriteOnly)) {
+                // error message
+            } else {
+                QTextStream stream(&file);
+                stream << ui->textEdit->toPlainText();
+                stream.flush();
+                file.close();
+            }
+        }
+}
